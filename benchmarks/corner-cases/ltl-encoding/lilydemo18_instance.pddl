@@ -1,0 +1,7 @@
+(define (problem prob)
+	(:domain dom)
+	(:init 
+	(nxt alphacount_1 alphacount_0) (nxt alphacount_2 alphacount_1)
+	(turn sync) (poss aut_0_t_0) (poss aut_0_t_1) (poss aut_0_t_2) (poss aut_0_t_3) (poss aut_0_t_4) (poss aut_0_t_5) (poss aut_0_t_6) (safe aut_0_t_6) (poss aut_0_t_7) (safe aut_0_t_7) (poss aut_0_t_8) (safe aut_0_t_8) (poss aut_0_t_9) (safe aut_0_t_9) (poss aut_0_t_10) (safe aut_0_t_10) (poss aut_0_t_11) (safe aut_0_t_11) (poss aut_0_t_12) (safe aut_0_t_12) (poss aut_0_t_13) (safe aut_0_t_13) (poss aut_0_t_14) (safe aut_0_t_14) (poss aut_0_t_15) (safe aut_0_t_15) (poss aut_0_t_16) (safe aut_0_t_16) (poss aut_0_t_17) (safe aut_0_t_17) (poss aut_0_t_18) (safe aut_0_t_18) (poss aut_0_t_19) (safe aut_0_t_19) (poss aut_0_t_20) (safe aut_0_t_20) (poss aut_0_t_21) (safe aut_0_t_21) (poss aut_0_t_22) (safe aut_0_t_22) (poss aut_0_t_23) (safe aut_0_t_23) (poss aut_0_t_24) (safe aut_0_t_24) (poss aut_0_t_25) (safe aut_0_t_25) (safe aut_0_t_33) (safe aut_0_t_34) (safe aut_0_t_35) (safe aut_0_t_36) (safe aut_0_t_38) (safe aut_0_t_40) (safe aut_0_t_42) (safe aut_0_t_44) (safe aut_0_t_45) (safe aut_0_t_47) (safe aut_0_t_49) (safe aut_0_t_51) (safe aut_0_t_53) (safe aut_0_t_55) (oldCnt aut_0_q_0 alphacount_0))
+	(:goal (dummy_goal))
+)

@@ -1,0 +1,5 @@
+(define (problem repeat-state-prob)
+ (:domain repeat-state)
+ (:init )
+ (:goal (and (g)))
+)

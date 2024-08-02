@@ -3,7 +3,7 @@
   (:types
      ;;;;;;;top level grid;;;;;;;;
      location 
-     problem
+     sub-problem
 
      ;;;;;;;subproblem;;;;;;;
      sub-location 
@@ -16,7 +16,7 @@
   )
   (:constants
      ;;;;;;;sub-problem types;;;;;
-     grid logistics blocksworld - problem
+     grid logistics blocksworld - sub-problem
 
      ;;;;;;;blocksworld subproblem;;;
      a b c - block
@@ -47,7 +47,7 @@
    (ninitialized ?locx ?locy - location)
 
    ;;subproblem type at each grid point
-   (problem-at ?locx ?locy - location ?p - problem)
+   (problem-at ?locx ?locy - location ?p - sub-problem)
 
    ;;;;;grid navigation subproblem;;;;;;;;;;;;;
    (s-at-x ?loc - sub-location)

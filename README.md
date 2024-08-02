@@ -5,6 +5,7 @@ Flat collection of all FOND domains in circulation. Notes are my (Christian Muis
 
 ## Notable Changes
 - `faults` and `faults-new` have an empty `:parameters` block added to the `finish` action.
+- `forest` and `forest-new` had `problem` type renamed to `sub-problem` to avoid a conflict with the `problem` keyword.
 
 ## FOND-SAT & Paladinus Domains
 

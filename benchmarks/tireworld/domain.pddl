@@ -22,6 +22,7 @@
   )
   
   (:action changetire
+    :parameters ()
     :precondition (hasspare)
     :effect (oneof (and) (and (not (hasspare)) (not-flattire))) ;; The original domain has a 50% chance of a spare change failing
   )

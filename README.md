@@ -3,6 +3,9 @@
 
 Flat collection of all FOND domains in circulation. Notes are my (Christian Muise) best guess.
 
+## Notable Changes
+- `faults` and `faults-new` have an empty `:parameters` block added to the `finish` action.
+
 ## FOND-SAT & Paladinus Domains
 
 These come from the FOND-SAT/Paladinus repos.

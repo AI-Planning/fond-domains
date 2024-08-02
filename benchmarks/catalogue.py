@@ -12,7 +12,7 @@ earthobservation = [("domain.pddl", f"p{i}.pddl") for i in range(1, 41)]
 elevators = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
 exblocksworld = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
 faults = [
-    (f"d_{i}_{j}.pddl", f"p_{i}_{j}.pddl")
+    (f"d_{i}_{j}-fixed.pddl", f"p_{i}_{j}.pddl")
     for i in range(1, 11)
     for j in range(1, i + 1)
 ]

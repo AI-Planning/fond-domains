@@ -43,7 +43,8 @@
                (not (last_fault f2)) (not_fault f2) (not (fault f2))
           )
   )
- (:action finish 
+ (:action finish
+  :parameters () 
   :precondition (and  (completed o1) (completed o2) (completed o3) (completed o4) (completed o5) (completed o6) (completed o7) (completed o8) (completed o9) (completed o10) (not (last_fault f2)))
   :effect (made)
  )

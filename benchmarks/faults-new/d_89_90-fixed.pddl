@@ -1452,7 +1452,8 @@
                (not (last_fault f90)) (not_fault f90) (not (fault f90))
           )
   )
- (:action finish 
+ (:action finish
+  :parameters () 
   :precondition (and  (completed o1) (completed o2) (completed o3) (completed o4) (completed o5) (completed o6) (completed o7) (completed o8) (completed o9) (completed o10) (completed o11) (completed o12) (completed o13) (completed o14) (completed o15) (completed o16) (completed o17) (completed o18) (completed o19) (completed o20) (completed o21) (completed o22) (completed o23) (completed o24) (completed o25) (completed o26) (completed o27) (completed o28) (completed o29) (completed o30) (completed o31) (completed o32) (completed o33) (completed o34) (completed o35) (completed o36) (completed o37) (completed o38) (completed o39) (completed o40) (completed o41) (completed o42) (completed o43) (completed o44) (completed o45) (completed o46) (completed o47) (completed o48) (completed o49) (completed o50) (completed o51) (completed o52) (completed o53) (completed o54) (completed o55) (completed o56) (completed o57) (completed o58) (completed o59) (completed o60) (completed o61) (completed o62) (completed o63) (completed o64) (completed o65) (completed o66) (completed o67) (completed o68) (completed o69) (completed o70) (completed o71) (completed o72) (completed o73) (completed o74) (completed o75) (completed o76) (completed o77) (completed o78) (completed o79) (completed o80) (completed o81) (completed o82) (completed o83) (completed o84) (completed o85) (completed o86) (completed o87) (completed o88) (completed o89) (not (last_fault f90)))
   :effect (made)
  )

@@ -171,7 +171,8 @@
                (not (last_fault f10)) (not_fault f10) (not (fault f10))
           )
   )
- (:action finish 
+ (:action finish
+  :parameters () 
   :precondition (and  (completed o1) (not (last_fault f10)))
   :effect (made)
  )

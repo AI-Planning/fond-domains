@@ -1,4 +1,5 @@
 (define (domain faults)
+ (:requirements :non-deterministic :typing)
  (:types operation fault)
  (:constants  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 - fault 
               o1 o2 o3 o4 o5 o6 o7 o8 o9 o10 - operation)
@@ -171,7 +172,8 @@
                (not (last_fault f10)) (not_fault f10)
           )
   )
- (:action finish 
+ (:action finish
+  :parameters () 
   :precondition (and  (completed o1) (completed o2) (completed o3) (completed o4) (completed o5) (completed o6) (completed o7) (completed o8) (completed o9) (completed o10))
   :effect (made)
  )

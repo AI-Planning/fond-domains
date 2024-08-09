@@ -2,6 +2,26 @@
 	(domain puffbot_dialog)
 	(:requirements :strips :typing :non-deterministic)
 	(:types Slot RelevantInformation UserStatus)
+	(:constants
+		slot6 - Slot
+		slot3 - Slot
+		slot5 - Slot
+		slot10 - Slot
+		slot13 - Slot
+		class2 - UserStatus
+		slot9 - Slot
+		slot4 - Slot
+		slot2 - Slot
+		slot8 - Slot
+		YesValue - RelevantInformation
+		class1 - UserStatus
+		class3 - UserStatus
+		slot7 - Slot
+		NoValue - RelevantInformation
+		slot1 - Slot
+		slot11 - Slot
+		slot12 - Slot
+	)
 	(:predicates 
 		(hasRelevantInformation ?x - Slot ?v - RelevantInformation)
 		(has_value ?s - Slot)

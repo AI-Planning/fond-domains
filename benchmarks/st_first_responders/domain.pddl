@@ -1,4 +1,5 @@
 (define (domain first-response)
+ (:requirements :non-deterministic :negative-preconditions :equality :typing)
  (:types location victim status fire_unit medical_unit)
  (:constants healthy hurt dying - status)
  (:predicates 

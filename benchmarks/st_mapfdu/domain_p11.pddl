@@ -1,6 +1,7 @@
 ; MAPF/DU domain (FOND version) with 8 worlds for 3 agents
 ; Author: Thorsten Engesser
 (define (domain mapfdu_3_agents)
+  (:requirements :non-deterministic :negative-preconditions :equality :typing)
   (:types agt world pos)
   (:constants w0 w1 w2 w3 w4 w5 w6 w7 - world
               a0 a1 a2 - agt)

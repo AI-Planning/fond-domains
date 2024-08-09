@@ -3,6 +3,7 @@
 ;;;  Modified: Dan Bryce for IPC 2008 ;;;
 
 (define (domain tire)
+  (:requirements :non-deterministic :typing)
   (:types location)
   (:predicates (vehicle-at ?loc - location) (spare-in ?loc - location) (road ?from - location ?to - location) (not-flattire) (hasspare))
   (:action move-car
@@ -16,6 +17,7 @@
     :effect (and (hasspare) (not (spare-in ?loc)))
   )
   (:action changetire
+    :parameters ()
     :precondition (hasspare)
     :effect (and (not (hasspare)) (not-flattire))
   )

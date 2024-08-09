@@ -1,4 +1,5 @@
 (define (domain blocks-domain)
+  (:requirements :non-deterministic :negative-preconditions :equality :typing)
   (:types block location)  
   (:constants l0 l10 - location)
   (:predicates 

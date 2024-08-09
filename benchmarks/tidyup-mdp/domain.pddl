@@ -1,5 +1,6 @@
 (define (domain tidyup_v2)
-    (:requirements :strips :typing :equality)
+
+    (:requirements :strips :typing :equality :non-deterministic :disjunctive-preconditions)
 
     (:types
             room

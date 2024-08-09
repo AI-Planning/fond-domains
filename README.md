@@ -4,9 +4,11 @@
 Flat collection of all FOND domains in circulation. Notes are my (Christian Muise) best guess.
 
 ## Notable Changes
-- `faults` and `faults-new` have an empty `:parameters` block added to the `finish` action.
-- Similarly for `tireworld` and the `changetire` action.
+- `faults`, `faults-new`, and `st_faults` have an empty `:parameters` block added to the `finish` action.
+- Similarly for `tireworld`+`st_tires` and the `changetire` action.
 - `forest` and `forest-new` had `problem` type renamed to `sub-problem` to avoid a conflict with the `problem` keyword.
+- Missing requirements added to `st_blocksworld`, `st_first_responders`, `st_mapfdu`, `st_tires`, `st_faults`, `puffbot_dialogue_pddl`, `tidyup-mdp`, and `zenotravel`.
+- `puffbot_dialogue_pddl` had the problem-specific objects moved to domain constants, since they are used in actions.
 
 ## FOND-SAT & Paladinus Domains
 

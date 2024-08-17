@@ -1,7 +1,16 @@
-
 import os
+from glob import glob
 
-acrobatics = [("domain.pddl", f"p{i}.pddl") for i in range(1, 9)]
+# Path to the directory containing this script
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+
+
+def get_instances(folder, pattern="p*.pddl"):
+    return sorted(glob(os.path.join(folder, pattern)))
+
+
+acrobatics = [("domain.pddl", os.path.basename(f)) for f in get_instances("acrobatics")]
+
 beamwalk = [("domain.pddl", f"p{i}.pddl") for i in range(1, 12)]
 blocks = [("domain-fixed.pddl", f"p{i}.pddl") for i in range(1, 31)]
 blocks2 = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
@@ -34,14 +43,16 @@ firstresponders = [
 ]
 firstrespondersnew = []
 # some instances have no solution, and planners fail in weird ways (many have no relaxed AO determinized solution)
-unsolveable_problems = set([(12,20), (24,30), (29,30), (2,10), (4,10), (5,10), (7,10)])
+unsolveable_problems = set(
+    [(12, 20), (24, 30), (29, 30), (2, 10), (4, 10), (5, 10), (7, 10)]
+)
 for base in range(0, 50, 10):
     for i in range(1, 10):
-        if (base+i, base+10) in unsolveable_problems:
+        if (base + i, base + 10) in unsolveable_problems:
             continue
         firstrespondersnew.append((f"domain-fixed.pddl", f"p_{base+i}_{base+10}.pddl"))
     for j in range(1, 10):
-        if (base+10, base+j) in unsolveable_problems:
+        if (base + 10, base + j) in unsolveable_problems:
             continue
         firstrespondersnew.append((f"domain-fixed.pddl", f"p_{base+10}_{base+j}.pddl"))
     firstrespondersnew.append((f"domain-fixed.pddl", f"p_{base+10}_{base+10}.pddl"))
@@ -141,7 +152,9 @@ stfirst = [
 stmapfdu = [("domain_p%02d.pddl" % i, "p%02d.pddl" % i) for i in range(1, 21)]
 sttires = [("domain.pddl", "p%02d.pddl" % i) for i in range(2, 16)]
 tidyup = [("domain.pddl", "tidyup_inst_mdp__%02d.pddl" % i) for i in range(1, 11)]
-tireworld = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16) if i not in [1,9,15]] # Instances 1, 9, and 15 are not solvable
+tireworld = [
+    ("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16) if i not in [1, 9, 15]
+]  # Instances 1, 9, and 15 are not solvable
 tireworldspiky = [("domain.pddl", f"p{i}.pddl") for i in range(1, 12)]
 tireworldtruck = [("domain.pddl", f"p{i}.pddl") for i in range(1, 75)]
 triangletireworld = [("domain.pddl", f"p{i}.pddl") for i in range(1, 41)]
@@ -149,24 +162,24 @@ zenotravel = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
 
 
 DOMAINS = {
-    "acrobatics": acrobatics,#
-    "beam-walk": beamwalk,#
+    "acrobatics": acrobatics,  #
+    "beam-walk": beamwalk,  #
     "blocksworld": blocks,
     "blocksworld-2": blocks2,
-    "blocksworld-new": blocksnew,#
-    "chain-of-rooms": chainofrooms,#
-    "doors": doors,#
-    "earth-observation": earthobservation,#
-    "elevators": elevators,#
+    "blocksworld-new": blocksnew,  #
+    "chain-of-rooms": chainofrooms,  #
+    "doors": doors,  #
+    "earth-observation": earthobservation,  #
+    "elevators": elevators,  #
     "ex-blocksworld": exblocksworld,
     "faults": faults,
-    "faults-new": faultsnew,#
+    "faults-new": faultsnew,  #
     "first-responders": firstresponders,
-    "first-responders-new": firstrespondersnew,#
+    "first-responders-new": firstrespondersnew,  #
     "forest": forest,
-    "forest-new": forestnew,#
-    "islands": islands,#
-    "miner": miner,#
+    "forest-new": forestnew,  #
+    "islands": islands,  #
+    "miner": miner,  #
     "puffbot_dialogue_pddl": puffbot,
     "rectangle-tireworld": rectangletire,
     "rectangle-tireworld-noghost": rectangletirenoghost,
@@ -175,63 +188,68 @@ DOMAINS = {
     "st_first_responders": stfirst,
     "st_mapfdu": stmapfdu,
     "st_tires": sttires,
-    "tidyup-mdp": tidyup,#
-    "tireworld": tireworld,#
-    "tireworld-spiky": tireworldspiky,#
-    "tireworld-truck": tireworldtruck,#
-    "triangle-tireworld": triangletireworld,#
-    "zenotravel": zenotravel,#
+    "tidyup-mdp": tidyup,  #
+    "tireworld": tireworld,  #
+    "tireworld-spiky": tireworldspiky,  #
+    "tireworld-truck": tireworldtruck,  #
+    "triangle-tireworld": triangletireworld,  #
+    "zenotravel": zenotravel,  #
 }
 
 COLLECTIONS = {
-    'original-fond-papers': [
-        'acrobatics',
-        'beam-walk',
-        'blocksworld-new',
-        'chain-of-rooms',
-        'earth-observation',
-        'elevators',
-        'faults-new',
-        'first-responders-new',
-        'forest-new',
-        'tidyup-mdp',
-        'tireworld',
-        'triangle-tireworld',
-        'zenotravel',
+    "original-fond-papers": [
+        "acrobatics",
+        "beam-walk",
+        "blocksworld-new",
+        "chain-of-rooms",
+        "earth-observation",
+        "elevators",
+        "faults-new",
+        "first-responders-new",
+        "forest-new",
+        "tidyup-mdp",
+        "tireworld",
+        "triangle-tireworld",
+        "zenotravel",
     ],
-    'new-fond-papers': [
-        'doors',
-        'islands',
-        'miner',
-        'tireworld-spiky',
-        'tireworld-truck',
+    "new-fond-papers": [
+        "doors",
+        "islands",
+        "miner",
+        "tireworld-spiky",
+        "tireworld-truck",
     ],
-    'extra': [
-        'ex-blocksworld',
-        'puffbot_dialogue_pddl',
-        'rectangle-tireworld',
-        'rectangle-tireworld-noghost',
+    "extra": [
+        "ex-blocksworld",
+        "puffbot_dialogue_pddl",
+        "rectangle-tireworld",
+        "rectangle-tireworld-noghost",
     ],
-    'strong': [
-        'st_blocksworld',
-        'st_faults',
-        'st_first_responders',
-        'st_mapfdu',
-        'st_tires',
+    "strong": [
+        "st_blocksworld",
+        "st_faults",
+        "st_first_responders",
+        "st_mapfdu",
+        "st_tires",
     ],
-    'all': list(DOMAINS.keys()),
+    "all": list(DOMAINS.keys()),
 }
 
-COLLECTIONS['all-fond-papers'] = COLLECTIONS['original-fond-papers'] + COLLECTIONS['new-fond-papers']
+COLLECTIONS["all-fond-papers"] = (
+    COLLECTIONS["original-fond-papers"] + COLLECTIONS["new-fond-papers"]
+)
 
-# Path to the directory containing this script
-SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 for dom in DOMAINS:
     # Replace all the files with their absolute path
     DOMAINS[dom] = [
-        (os.path.abspath(os.path.join(SCRIPT_DIR, dom, dom_file)), os.path.abspath(os.path.join(SCRIPT_DIR, dom, prob_file))) for dom_file, prob_file in DOMAINS[dom]
+        (
+            os.path.abspath(os.path.join(SCRIPT_DIR, dom, dom_file)),
+            os.path.abspath(os.path.join(SCRIPT_DIR, dom, prob_file)),
+        )
+        for dom_file, prob_file in DOMAINS[dom]
     ]
+
 
 def confirm_files():
     for d in DOMAINS:
@@ -239,5 +257,6 @@ def confirm_files():
         for domain, problem in DOMAINS[d]:
             assert os.path.exists(domain), f"{domain} does not exist"
             assert os.path.exists(problem), f"{problem} does not exist"
+
 
 # confirm_files()

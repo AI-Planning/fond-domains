@@ -1,237 +1,351 @@
-
 import os
-
-acrobatics = [("domain.pddl", f"p{i}.pddl") for i in range(1, 9)]
-beamwalk = [("domain.pddl", f"p{i}.pddl") for i in range(1, 12)]
-blocks = [("domain-fixed.pddl", f"p{i}.pddl") for i in range(1, 31)]
-blocks2 = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
-blocksnew = [("domain-fixed.pddl", f"p{i}.pddl") for i in range(1, 51)]
-chainofrooms = [("domain.pddl", f"p{i}.pddl") for i in range(10, 101, 10)]
-doors = [("domain.pddl", f"p{i}.pddl") for i in range(1, 16)]
-earthobservation = [("domain.pddl", f"p{i}.pddl") for i in range(1, 41)]
-elevators = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
-exblocksworld = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
-faults = [
-    (f"d_{i}_{j}-fixed.pddl", f"p_{i}_{j}.pddl")
-    for i in range(1, 11)
-    for j in range(1, i + 1)
-]
-faultsnew = []
-for base in range(0, 100, 10):
-    for i in range(1, 10):
-        faultsnew.append(
-            (f"d_{base+i}_{base+10}-fixed.pddl", f"p_{base+i}_{base+10}.pddl")
-        )
-    for j in range(1, 10):
-        faultsnew.append(
-            (f"d_{base+10}_{base+j}-fixed.pddl", f"p_{base+10}_{base+j}.pddl")
-        )
-    faultsnew.append(
-        (f"d_{base+10}_{base+10}-fixed.pddl", f"p_{base+10}_{base+10}.pddl")
-    )
-firstresponders = [
-    ("domain-fixed.pddl", f"p_{i}_{j}.pddl") for i in range(1, 11) for j in range(1, 11)
-]
-firstrespondersnew = []
-# some instances have no solution, and planners fail in weird ways (many have no relaxed AO determinized solution)
-unsolveable_problems = set([(12,20), (24,30), (29,30), (2,10), (4,10), (5,10), (7,10)])
-for base in range(0, 50, 10):
-    for i in range(1, 10):
-        if (base+i, base+10) in unsolveable_problems:
-            continue
-        firstrespondersnew.append((f"domain-fixed.pddl", f"p_{base+i}_{base+10}.pddl"))
-    for j in range(1, 10):
-        if (base+10, base+j) in unsolveable_problems:
-            continue
-        firstrespondersnew.append((f"domain-fixed.pddl", f"p_{base+10}_{base+j}.pddl"))
-    firstrespondersnew.append((f"domain-fixed.pddl", f"p_{base+10}_{base+10}.pddl"))
-forest = [
-    ("domain.pddl", f"p_{i}_{j}.pddl") for i in range(2, 11) for j in range(1, 11)
-]
-forestnew = [
-    ("domain.pddl", f"p_{i}_{j}.pddl") for i in range(1, 11) for j in range(1, 11)
-]
-islands = [("domain.pddl", f"p{i}.pddl") for i in range(1, 61)]
-miner = [("domain.pddl", f"p{i}.pddl") for i in range(1, 52)]
-puffbot = [(f"dm{i}.pddl", f"pb{i}.pddl") for i in range(1, 16)]
-rectangletire = [("domain.pddl", f"p{i}.pddl") for i in range(1, 16)]
-rectangletirenoghost = [("domain.pddl", f"p{i}.pddl") for i in range(1, 16)]
-stblocks = [("domain.pddl", f"p{i}.pddl") for i in range(1, 31)]
-stfaults = [(f"d_{i}_{i}.pddl", f"p_{i}_{i}.pddl") for i in range(1, 11)]
-stfirst = [
-    ("domain.pddl", prob)
-    for prob in [
-        "p_10_1.pddl",
-        "p_10_10.pddl",
-        "p_10_2.pddl",
-        "p_10_3.pddl",
-        "p_10_4.pddl",
-        "p_10_5.pddl",
-        "p_10_7.pddl",
-        "p_10_8.pddl",
-        "p_1_1.pddl",
-        "p_1_10.pddl",
-        "p_1_2.pddl",
-        "p_1_3.pddl",
-        "p_1_4.pddl",
-        "p_1_5.pddl",
-        "p_1_6.pddl",
-        "p_1_7.pddl",
-        "p_1_8.pddl",
-        "p_1_9.pddl",
-        "p_2_2.pddl",
-        "p_2_3.pddl",
-        "p_2_4.pddl",
-        "p_2_7.pddl",
-        "p_2_8.pddl",
-        "p_3_1.pddl",
-        "p_3_2.pddl",
-        "p_3_7.pddl",
-        "p_3_8.pddl",
-        "p_4_1.pddl",
-        "p_4_2.pddl",
-        "p_4_3.pddl",
-        "p_4_4.pddl",
-        "p_4_6.pddl",
-        "p_4_7.pddl",
-        "p_4_8.pddl",
-        "p_4_9.pddl",
-        "p_5_1.pddl",
-        "p_5_10.pddl",
-        "p_5_2.pddl",
-        "p_5_3.pddl",
-        "p_5_4.pddl",
-        "p_5_5.pddl",
-        "p_5_8.pddl",
-        "p_5_9.pddl",
-        "p_6_1.pddl",
-        "p_6_10.pddl",
-        "p_6_2.pddl",
-        "p_6_3.pddl",
-        "p_6_4.pddl",
-        "p_6_5.pddl",
-        "p_6_8.pddl",
-        "p_6_9.pddl",
-        "p_7_1.pddl",
-        "p_7_10.pddl",
-        "p_7_2.pddl",
-        "p_7_3.pddl",
-        "p_7_4.pddl",
-        "p_7_5.pddl",
-        "p_7_6.pddl",
-        "p_7_7.pddl",
-        "p_7_8.pddl",
-        "p_8_1.pddl",
-        "p_8_10.pddl",
-        "p_8_2.pddl",
-        "p_8_4.pddl",
-        "p_8_5.pddl",
-        "p_8_6.pddl",
-        "p_8_7.pddl",
-        "p_8_8.pddl",
-        "p_8_9.pddl",
-        "p_9_1.pddl",
-        "p_9_2.pddl",
-        "p_9_3.pddl",
-        "p_9_6.pddl",
-        "p_9_7.pddl",
-        "p_9_8.pddl",
-    ]
-]
-stmapfdu = [("domain_p%02d.pddl" % i, "p%02d.pddl" % i) for i in range(1, 21)]
-sttires = [("domain.pddl", "p%02d.pddl" % i) for i in range(2, 16)]
-tidyup = [("domain.pddl", "tidyup_inst_mdp__%02d.pddl" % i) for i in range(1, 11)]
-tireworld = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16) if i not in [1,9,15]] # Instances 1, 9, and 15 are not solvable
-tireworldspiky = [("domain.pddl", f"p{i}.pddl") for i in range(1, 12)]
-tireworldtruck = [("domain.pddl", f"p{i}.pddl") for i in range(1, 75)]
-triangletireworld = [("domain.pddl", f"p{i}.pddl") for i in range(1, 41)]
-zenotravel = [("domain.pddl", "p%02d.pddl" % i) for i in range(1, 16)]
-
-
-DOMAINS = {
-    "acrobatics": acrobatics,#
-    "beam-walk": beamwalk,#
-    "blocksworld": blocks,
-    "blocksworld-2": blocks2,
-    "blocksworld-new": blocksnew,#
-    "chain-of-rooms": chainofrooms,#
-    "doors": doors,#
-    "earth-observation": earthobservation,#
-    "elevators": elevators,#
-    "ex-blocksworld": exblocksworld,
-    "faults": faults,
-    "faults-new": faultsnew,#
-    "first-responders": firstresponders,
-    "first-responders-new": firstrespondersnew,#
-    "forest": forest,
-    "forest-new": forestnew,#
-    "islands": islands,#
-    "miner": miner,#
-    "puffbot_dialogue_pddl": puffbot,
-    "rectangle-tireworld": rectangletire,
-    "rectangle-tireworld-noghost": rectangletirenoghost,
-    "st_blocksworld": stblocks,
-    "st_faults": stfaults,
-    "st_first_responders": stfirst,
-    "st_mapfdu": stmapfdu,
-    "st_tires": sttires,
-    "tidyup-mdp": tidyup,#
-    "tireworld": tireworld,#
-    "tireworld-spiky": tireworldspiky,#
-    "tireworld-truck": tireworldtruck,#
-    "triangle-tireworld": triangletireworld,#
-    "zenotravel": zenotravel,#
-}
-
-COLLECTIONS = {
-    'original-fond-papers': [
-        'acrobatics',
-        'beam-walk',
-        'blocksworld-new',
-        'chain-of-rooms',
-        'earth-observation',
-        'elevators',
-        'faults-new',
-        'first-responders-new',
-        'forest-new',
-        'tidyup-mdp',
-        'tireworld',
-        'triangle-tireworld',
-        'zenotravel',
-    ],
-    'new-fond-papers': [
-        'doors',
-        'islands',
-        'miner',
-        'tireworld-spiky',
-        'tireworld-truck',
-    ],
-    'extra': [
-        'ex-blocksworld',
-        'puffbot_dialogue_pddl',
-        'rectangle-tireworld',
-        'rectangle-tireworld-noghost',
-    ],
-    'strong': [
-        'st_blocksworld',
-        'st_faults',
-        'st_first_responders',
-        'st_mapfdu',
-        'st_tires',
-    ],
-    'all': list(DOMAINS.keys()),
-}
-
-COLLECTIONS['all-fond-papers'] = COLLECTIONS['original-fond-papers'] + COLLECTIONS['new-fond-papers']
+from glob import glob
+import re
 
 # Path to the directory containing this script
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
+
+def get_instances(
+    path,
+    pattern="p_*.pddl",
+    regex=None,
+    sorted_by=lambda x: extract_instance_no(x),
+):
+    """Get sorted list of problem instance files in a folder
+
+    pattern and regex are mutually exclusive to filter which files to include
+    """
+
+    if regex is not None:
+        pattern = "p??.pddl"
+        files = [f for f in os.listdir(path) if re.search(regex, f)]
+    else:
+        files = glob(os.path.join(path, pattern))
+
+    if sorted_by is None:
+        return sorted(files)
+    else:
+        return sorted(files, key=sorted_by)
+
+
+def extract_instance_no(file_name):
+    """Guess the instance number from the file name; otherwise yield file name itself"""
+    # p_12_2.pddl
+    x = re.search(r"p_(\d+)_(\d+).pddl", file_name)
+    if x is not None:
+        return int(x.group(1)), int(x.group(2))
+
+    # p_12.pddl or p12.pddl
+    x = re.search(r"p_?(\d+).pddl", file_name)
+    if x is not None:
+        return int(x.group(1))
+
+    # pb_12.pddl or pb12.pddl
+    x = re.search(r"pb_?(\d+).pddl", file_name)
+    if x is not None:
+        return int(x.group(1))
+
+    # last option: just return file name
+    # print(file_name)
+    return file_name
+
+
+acrobatics = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances(
+        "acrobatics",
+        pattern="p*.pddl",
+    )
+]
+beamwalk = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("beam-walk", pattern="p*.pddl")
+]
+blocks_world = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("blocksworld", pattern="p*.pddl")
+]
+blocks_world2 = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("blocksworld-2", pattern="p*.pddl")
+]
+blocks_world_new = [
+    ("domain-fixed.pddl", os.path.basename(f))
+    for f in get_instances("blocksworld-new", pattern="p*.pddl")
+]
+
+chain_of_rooms = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("chain-of-rooms", pattern="p*.pddl")
+]
+
+doors = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("doors", pattern="p*.pddl")
+]
+
+earth_observation = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("earth-observation", pattern="p*.pddl")
+]
+
+elevators = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("elevators", pattern="p*.pddl")
+]
+
+ex_blocksworld = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("ex-blocksworld", pattern="p*.pddl")
+]
+faults = [
+    (
+        f"d_{extract_instance_no(f)[0]}_{extract_instance_no(f)[1]}-fixed.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances(
+        "faults",
+        pattern="p_*_*.pddl",
+        sorted_by=lambda x: extract_instance_no(x),
+    )
+]
+faults_new = [
+    (
+        f"d_{extract_instance_no(f)[0]}_{extract_instance_no(f)[1]}-fixed.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances(
+        "faults-new",
+        pattern="p_*_*.pddl",
+        sorted_by=lambda x: extract_instance_no(x),
+    )
+]
+first_responders = [
+    (
+        "domain-fixed.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances(
+        "first-responders",
+        pattern="p_*_*.pddl",
+        sorted_by=lambda x: extract_instance_no(x),
+    )
+]
+
+# some instances have no solution, and planners fail in weird ways (many have no relaxed AO determinized solution)
+first_responders_new_unsolveable = set(
+    [(12, 20), (24, 30), (29, 30), (2, 10), (4, 10), (5, 10), (7, 10)]
+)
+first_responders_new = [
+    (
+        "domain-fixed.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances(
+        "first-responders-new",
+        pattern="p_*_*.pddl",
+        sorted_by=lambda x: extract_instance_no(x),
+    )
+    if extract_instance_no(f) not in first_responders_new_unsolveable
+]
+forest = [("domain.pddl", os.path.basename(f)) for f in get_instances("forest")]
+forest_new = [("domain.pddl", os.path.basename(f)) for f in get_instances("forest-new")]
+
+islands = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("islands", pattern="p*.pddl")
+]
+miner = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("miner", pattern="p*.pddl")
+]
+puffbot = [
+    (f"dm{extract_instance_no(f)}.pddl", os.path.basename(f))
+    for f in get_instances("puffbot_dialogue_pddl", regex=r"pb\d+.pddl")
+]
+rectangle_tire = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("rectangle-tireworld", regex=r"p\d+.pddl")
+]
+rectangle_tire_noghost = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("rectangle-tireworld-noghost", regex=r"p\d+.pddl")
+]
+
+st_blocksworld = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("st_blocksworld", pattern="p*.pddl")
+]
+st_faults = [
+    (
+        f"d_{extract_instance_no(f)[0]}_{extract_instance_no(f)[1]}.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("st_faults", regex=r"p_\d+_\d+.pddl")
+]
+st_first_respondeners = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("st_first_responders", regex=r"p_\d+_\d+.pddl")
+]
+st_mapfdu = [
+    (
+        f"domain_p{extract_instance_no(f):02}.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("st_mapfdu", regex=r"^p\d+.pddl")
+]
+sttires = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("st_tires", regex=r"^p\d+.pddl")
+]
+tidyup = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances(
+        "tidyup-mdp",
+        regex=r"tidyup_inst_mdp__\d+.pddl",
+        sorted_by=lambda x: int(re.search(r"tidyup_inst_mdp__(\d+).pddl", x).group(1)),
+    )
+]
+
+tireworld_unsolvable = set([1, 9, 15])
+tireworld = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("tireworld", regex=r"^p\d+.pddl")
+    if extract_instance_no(f) not in tireworld_unsolvable
+]
+
+tireworld_spiky = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("tireworld-spiky", regex=r"^p\d+.pddl")
+]
+tireworld_truck = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("tireworld-truck", regex=r"^p\d+.pddl")
+]
+triangletire_world = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("triangle-tireworld", regex=r"^p\d+.pddl")
+]
+zenotravel = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("zenotravel", regex=r"^p\d+.pddl")
+]
+
+
+DOMAINS = {
+    "acrobatics": acrobatics,  #
+    "beam-walk": beamwalk,  #
+    "blocksworld": blocks_world,
+    "blocksworld-2": blocks_world2,
+    "blocksworld-new": blocks_world_new,  #
+    "chain-of-rooms": chain_of_rooms,  #
+    "doors": doors,  #
+    "earth-observation": earth_observation,  #
+    "elevators": elevators,  #
+    "ex-blocksworld": ex_blocksworld,
+    "faults": faults,
+    "faults-new": faults_new,  #
+    "first-responders": first_responders,
+    "first-responders-new": first_responders_new,  #
+    "forest": forest,
+    "forest-new": forest_new,  #
+    "islands": islands,  #
+    "miner": miner,  #
+    "puffbot_dialogue_pddl": puffbot,
+    "rectangle-tireworld": rectangle_tire,
+    "rectangle-tireworld-noghost": rectangle_tire_noghost,
+    "st_blocksworld": st_blocksworld,
+    "st_faults": st_faults,
+    "st_first_responders": st_first_respondeners,
+    "st_mapfdu": st_mapfdu,
+    "st_tires": sttires,
+    "tidyup-mdp": tidyup,  #
+    "tireworld": tireworld,  #
+    "tireworld-spiky": tireworld_spiky,  #
+    "tireworld-truck": tireworld_truck,  #
+    "triangle-tireworld": triangletire_world,  #
+    "zenotravel": zenotravel,  #
+}
+
+COLLECTIONS = {
+    "original-fond-papers": [
+        "acrobatics",
+        "beam-walk",
+        "blocksworld-new",
+        "chain-of-rooms",
+        "earth-observation",
+        "elevators",
+        "faults-new",
+        "first-responders-new",
+        "forest-new",
+        "tidyup-mdp",
+        "tireworld",
+        "triangle-tireworld",
+        "zenotravel",
+    ],
+    "new-fond-papers": [
+        "doors",
+        "islands",
+        "miner",
+        "tireworld-spiky",
+        "tireworld-truck",
+    ],
+    "extra": [
+        "ex-blocksworld",
+        "puffbot_dialogue_pddl",
+        "rectangle-tireworld",
+        "rectangle-tireworld-noghost",
+    ],
+    "strong": [
+        "st_blocksworld",
+        "st_faults",
+        "st_first_responders",
+        "st_mapfdu",
+        "st_tires",
+    ],
+    "all": list(DOMAINS.keys()),
+}
+
+COLLECTIONS["all-fond-papers"] = (
+    COLLECTIONS["original-fond-papers"] + COLLECTIONS["new-fond-papers"]
+)
+
+
 for dom in DOMAINS:
     # Replace all the files with their absolute path
     DOMAINS[dom] = [
-        (os.path.abspath(os.path.join(SCRIPT_DIR, dom, dom_file)), os.path.abspath(os.path.join(SCRIPT_DIR, dom, prob_file))) for dom_file, prob_file in DOMAINS[dom]
+        (
+            os.path.abspath(os.path.join(SCRIPT_DIR, dom, dom_file)),
+            os.path.abspath(os.path.join(SCRIPT_DIR, dom, prob_file)),
+        )
+        for dom_file, prob_file in DOMAINS[dom]
     ]
+
 
 def confirm_files():
     for d in DOMAINS:
@@ -239,5 +353,6 @@ def confirm_files():
         for domain, problem in DOMAINS[d]:
             assert os.path.exists(domain), f"{domain} does not exist"
             assert os.path.exists(problem), f"{problem} does not exist"
+
 
 # confirm_files()

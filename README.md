@@ -48,7 +48,7 @@ These domains are already FOND ones, that is, they use the non-deterministic `on
 
 A description of the above domains can be found in 2008 Bryce & Buffet's [International Planning Competition Uncertainty Part: Benchmarks and Results](https://ipc08.icaps-conference.org/probabilistic/wiki/images/0/03/Results.pdf) report.
 
-## PRP
+## PRP (2012)
 
 The [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf) used all the IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
 
@@ -65,7 +65,7 @@ Second, the PRP paper modified three domains from [**2006 IPC5 Probabilistic Tra
 
 Many additional domains were added later to its [repo](https://github.com/QuMuLab/planner-for-relevant-policies/tree/master/fond-benchmarks) that were not included in the original 2012 paper, but became default benchmarks for later FOND planners. 👍
 
-## FOND-SAT
+## FOND-SAT (2018)
 
 These five come from the [FOND-SAT](https://github.com/tomsons22/FOND-SAT) repo/paper, crafted to have many "misleading plans" (i.e., weak plans leading to dead-ends):
 
@@ -105,6 +105,24 @@ for domain_name in COLLECTIONS['all-fond-papers']:
     print(domain_name)
 ```
 
+Script can also be run as follows:
+
+```python
+$ python catalogue.py
+(  8) acrobatics
+( 11) beam-walk
+( 30) blocksworld
+( 15) blocksworld-2
+( 50) blocksworld-new
+(  1) bus-fare
+...
+...
+...
+All domains in collection 'interesting':
+         climber
+         bus-fare
+         river
+```
 
 ## FOND Planners
 

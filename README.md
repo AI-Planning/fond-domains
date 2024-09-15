@@ -50,7 +50,7 @@ A description of the above domains can be found in 2008 Bryce & Buffet's [Intern
 
 ## PRP
 
-The 2012 PRP paper used all the IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
+The [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf) used all the IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
 
 First, the `blocksworld` and `forest` domains were extended as follows:
 
@@ -62,6 +62,8 @@ Second, the PRP paper modified three domains from [**2006 IPC5 Probabilistic Tra
 - `blocksworld-2`
 - `elevators`
 - `zenotravel`
+
+Many additional domains were added later to its [repo](https://github.com/QuMuLab/planner-for-relevant-policies/tree/master/fond-benchmarks) that were not included in the original 2012 paper, but became default benchmarks for later FOND planners. 👍
 
 ## FOND-SAT
 

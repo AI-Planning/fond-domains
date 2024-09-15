@@ -1,10 +1,11 @@
+;https://gki.informatik.uni-freiburg.de/papers/aldinger-loehr-pcd2013.pdf
 (define (domain earth_observation)
     (:requirements :strips :typing :equality :non-deterministic)
 
     (:types
-            patch - object
-            direction - object
-            cost-direction - direction
+        patch - object
+        direction - object
+        cost-direction - direction
     )
 
     (:constants
@@ -12,51 +13,45 @@
         north-east south-east - cost-direction
     )
 
-    (:predicates 
+    (:predicates
         (CONNECTED ?p ?n - patch ?d - direction)
         (is-focal-point ?p - patch)
         (is-target ?p - patch)
         (scanned ?p - patch)
-    ) 
- 
-    (:action slew 
-     :parameters (?p ?n - patch ?d - cost-direction)
-     :precondition 
-        (and 
+    )
+
+    (:action slew
+        :parameters (?p ?n - patch ?d - cost-direction)
+        :precondition (and
             (CONNECTED ?p ?n ?d)
             (is-focal-point ?p)
-        ) 
-     :effect 
-        (and 
+        )
+        :effect (and
             (not (is-focal-point ?p))
             (is-focal-point ?n)
         )
-    ) 
+    )
 
-    (:action slew 
-     :parameters (?p ?n - patch)
-     :precondition 
-        (and 
+    (:action slew
+        :parameters (?p ?n - patch)
+        :precondition (and
             (CONNECTED ?p ?n east)
             (is-focal-point ?p)
-        ) 
-     :effect 
-        (and 
+        )
+        :effect (and
             (not (is-focal-point ?p))
             (is-focal-point ?n)
         )
-    ) 
- 
+    )
+
     (:action take-image
-     :parameters (?p ?n - patch)
-     :precondition
-        (and
+        :parameters (?p ?n - patch)
+        :precondition (and
             (is-target ?p)
             (is-focal-point ?p)
             (CONNECTED ?p ?n east)
         )
-     :effect
-        (oneof
+        :effect (oneof
             (and
                 (not (is-focal-point ?p))
                 (not (is-target ?p))
@@ -68,5 +63,4 @@
             )
         )
     )
- )
-
+)

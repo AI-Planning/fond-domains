@@ -35,22 +35,27 @@ Domains taken from FOND replanner [safe-planner](https://github.com/mokhtarivahi
 
 ## IPC-6 2008
 
-The following four domains from the [**2008 IPC-6 FOND track**](https://ipc08.icaps-conference.org/probabilistic/wiki/index.php/Results.html#Fully_Observable_Non-Deterministic_.28FOND.29_track) in the uncertainty part:
+The following four domains from the [**2008 IPC-6 FOND track**](https://ipc08.icaps-conference.org/probabilistic/wiki/index.php/Results.html#Fully_Observable_Non-Deterministic_.28FOND.29_track) in the [uncertainty part](https://ipc08.icaps-conference.org/probabilistic/wiki/):
 
 - `blocksworld` (all solvable)
 - `faults` (all solvable)
 - `first-responders`
 - `forest` (at least 48/66 proven unsolvable)
-- `rectangle-tireworld`: a variant of `triangle-tireworld` where the network is rectangular; nondeterministic by removing probabilities from the FOP version.
-  - `rectangle-tireworld-noghost`: same but without the `ghostTeleport`  action.
 
 These domains are already FOND ones, that is, they use the non-deterministic `oneof` construct. Not every problem has a strong-cyclic plan, some were proved unsolvable (see Table 1 in [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf)).
+
+
+In addition, the following domains were crafted but not used in the final competition:
+
+- `rectangle-tireworld`: a variant of `triangle-tireworld` where the network is rectangular; nondeterministic by removing probabilities from the FOP version.
+  - `rectangle-tireworld-noghost`: same but without the `ghostTeleport`  action.
+- `tireworld`: adapted the IPC-5 (2006) probabilistic version by replacing probabilities with `oneof` non-determinism. Provided as an example before competition.
 
 A description of the above domains can be found in 2008 Bryce & Buffet's [International Planning Competition Uncertainty Part: Benchmarks and Results](https://ipc08.icaps-conference.org/probabilistic/wiki/images/0/03/Results.pdf) report.
 
 ## PRP (2012)
 
-The [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf) used all the IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
+The [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf) used all the four final IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
 
 First, the `blocksworld` and `forest` domains were extended as follows:
 
@@ -69,8 +74,8 @@ Many additional domains were added later to its [repo](https://github.com/QuMuLa
 
 These five come from the [FOND-SAT](https://github.com/tomsons22/FOND-SAT) repo/paper, crafted to have many "misleading plans" (i.e., weak plans leading to dead-ends):
 
-- `tireworld-spiky`: modification of triangle `tireworld`.
-- `tireworld-truck`: modification of triangle `tireworld-spiky` itself.
+- `tireworld-spiky`: modification of `triangle-tireworld`.
+- `tireworld-truck`: modification of `tireworld-spiky` itself.
 - `islands`
 - `doors`: a variation of `chain-of-rooms` (used by QBFPLAN and MBP).
 - `miner`
@@ -80,10 +85,11 @@ These five come from the [FOND-SAT](https://github.com/tomsons22/FOND-SAT) repo/
 
 - `acrobatics`: similar to `beam-walk`; by Miquel Ramirez 2014.
 - `beam-walk`: [(Cimatti, Roveri, & Traverso, 1998)](https://cdn.aaai.org/AAAI/1998/AAAI98-124.pdf)
-- `earth-observation`: ([J Aldinger & J Löhr, 2013)](https://gki.informatik.uni-freiburg.de/papers/aldinger-loehr-pcd2013.pdf)
 - `chain-of-rooms`: from [Constructing conditional plans by a theorem-prover](https://jair.org/index.php/jair/article/view/10230/), JAIR 10 (1999), 323–352, as part of the QBFPLAN planner.
-- `st_mapfdu`: From Thorsten Engesser on planning for implicit coordination. Strong cyclic plans exist, but it's the acyclic ones that are desired.
+- `earth-observation`: ([J Aldinger & J Löhr, 2013)](https://gki.informatik.uni-freiburg.de/papers/aldinger-loehr-pcd2013.pdf)
 - `puffbot_dialogue_pddl`: From Milene Teixeira -- domain for building dialogue agents in the health-care setting.
+- `st_mapfdu`: from Thorsten Engesser on planning for implicit coordination. Strong cyclic plans exist, but it's the acyclic ones that are desired.
+
 
 ## Catalogue Tool
 

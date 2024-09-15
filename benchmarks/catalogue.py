@@ -75,10 +75,21 @@ blocks_world_new = [
     for f in get_instances("blocksworld-new", pattern="p*.pddl")
 ]
 
+bus_fare = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("bus-fare", pattern="p*.pddl")
+]
+
 chain_of_rooms = [
     ("domain.pddl", os.path.basename(f))
     for f in get_instances("chain-of-rooms", pattern="p*.pddl")
 ]
+
+climber = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("climber", pattern="p*.pddl")
+]
+
 
 doors = [
     ("domain.pddl", os.path.basename(f))
@@ -248,6 +259,19 @@ triangletire_world = [
     )
     for f in get_instances("triangle-tireworld", regex=r"^p\d+.pddl")
 ]
+
+bus_fare = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("bus-fare", pattern="p*.pddl")
+]
+
+river = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("river", regex=r"^p\d+.pddl")
+]
 zenotravel = [
     (
         "domain.pddl",
@@ -263,7 +287,9 @@ DOMAINS = {
     "blocksworld": blocks_world,
     "blocksworld-2": blocks_world2,
     "blocksworld-new": blocks_world_new,  #
+    "bus-fare": bus_fare,
     "chain-of-rooms": chain_of_rooms,  #
+    "climber": climber,
     "doors": doors,  #
     "earth-observation": earth_observation,  #
     "elevators": elevators,  #
@@ -279,6 +305,7 @@ DOMAINS = {
     "puffbot_dialogue_pddl": puffbot,
     "rectangle-tireworld": rectangle_tire,
     "rectangle-tireworld-noghost": rectangle_tire_noghost,
+    "river": river,
     "st_blocksworld": st_blocksworld,
     "st_faults": st_faults,
     "st_first_responders": st_first_respondeners,
@@ -328,6 +355,7 @@ COLLECTIONS = {
         "st_mapfdu",
         "st_tires",
     ],
+    "interesting": ["climber", "bus-fare", "river"],
     "all": list(DOMAINS.keys()),
 }
 
@@ -356,3 +384,23 @@ def confirm_files():
 
 
 # confirm_files()
+
+
+if __name__ == "__main__":
+
+    # Prints out every benchmark and the number of instances in them
+    confirm_files()
+
+    # Access the problems for a specific domain
+    # for dom, prob in DOMAINS["acrobatics"]:
+    #     print(dom)
+    #     print(prob)
+
+    # Access all the benchmarks for a specific collection
+    print("All domains in collection 'all-fond-papers':")
+    for domain_name in COLLECTIONS["all-fond-papers"]:
+        print("\t", domain_name)
+
+    print("All domains in collection 'interesting':")
+    for domain_name in COLLECTIONS["interesting"]:
+        print("\t", domain_name)

@@ -55,16 +55,16 @@ A description of the above domains can be found in 2008 Bryce & Buffet's [Intern
 
 ## PRP (2012)
 
-The [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf) used all the four final IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
+The [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf) used all the four final 2008 IPC-6 FOND track domains and probabilistic interesting ones, plus the following ones.
 
 First, the `blocksworld` and `forest` domains were extended as follows:
 
-- `blocksworld-new`: scaled the number of blocks from 1 to 50 (the highest number of blocks in the original benchmark set is 20)
+- `blocksworld-new`: scaled the number of blocks from 1 to 50 (the highest number of blocks in the original benchmark set is 20).
 - `forest-new`: generator slightly to guarantee that every problem has a strong cyclic plan.
 
 Second, the PRP paper modified three domains from [**2006 IPC5 Probabilistic Track**](https://ipc06.icaps-conference.org/probabilistic/) by stripping the probabilities and replacing them with non-deterministic `oneof` constructs:
 
-- `blocksworld-2`
+- `blocksworld-2`: same domain as the IPC-6 `blocksworld` but with 15 instances coming from the probabilistic track.
 - `elevators`
 - `zenotravel`
 

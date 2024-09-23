@@ -171,9 +171,9 @@ miner = [
     ("domain.pddl", os.path.basename(f))
     for f in get_instances("miner", pattern="p*.pddl")
 ]
-puffbot = [
+puffbot_dialog = [
     (f"dm{extract_instance_no(f)}.pddl", os.path.basename(f))
-    for f in get_instances("puffbot_dialogue_pddl", regex=r"pb\d+.pddl")
+    for f in get_instances("puffbot-dialog", regex=r"pb\d+.pddl")
 ]
 rectangle_tire = [
     ("domain.pddl", os.path.basename(f))
@@ -302,7 +302,7 @@ DOMAINS = {
     "forest-new": forest_new,  #
     "islands": islands,  #
     "miner": miner,  #
-    "puffbot_dialogue_pddl": puffbot,
+    "puffbot-dialog": puffbot_dialog,
     "rectangle-tireworld": rectangle_tire,
     "rectangle-tireworld-noghost": rectangle_tire_noghost,
     "river": river,
@@ -344,7 +344,7 @@ COLLECTIONS = {
     ],
     "extra": [
         "blocksworld-ex",
-        "puffbot_dialogue_pddl",
+        "puffbot-dialog",
         "rectangle-tireworld",
         "rectangle-tireworld-noghost",
     ],

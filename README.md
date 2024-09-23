@@ -90,7 +90,7 @@ These five come from the [FOND-SAT](https://github.com/tomsons22/FOND-SAT) repo/
 - `beam-walk`: [(Cimatti, Roveri, & Traverso, 1998)](https://cdn.aaai.org/AAAI/1998/AAAI98-124.pdf)
 - `chain-of-rooms`: from [Constructing conditional plans by a theorem-prover](https://jair.org/index.php/jair/article/view/10230/), JAIR 10 (1999), 323–352, as part of the QBFPLAN planner.
 - `earth-observation`: ([J Aldinger & J Löhr, 2013)](https://gki.informatik.uni-freiburg.de/papers/aldinger-loehr-pcd2013.pdf)
-- `puffbot_dialogue_pddl`: From Milene Teixeira -- domain for building dialogue agents in the health-care setting.
+- `puffbot-dialog`: domain generating the dialogue policy for building dialogue agents in the health-care setting. Reported in [Teixeira et. al SAC'21 paper](https://dl.acm.org/doi/10.1145/3412841.3441942) and [PhD thesis](https://iris.unitn.it/retrieve/handle/11572/361402/595412/phd_unitn_santos_teixeira_milene.pdf).
 - `st_mapfdu`: from Thorsten Engesser on planning for implicit coordination. Strong cyclic plans exist, but it's the acyclic ones that are desired.
 
 

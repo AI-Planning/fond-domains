@@ -71,6 +71,7 @@ Second, the PRP paper modified three domains from [**2006 IPC5 Probabilistic Tra
 Many additional domains were added later to its [repo](https://github.com/QuMuLab/planner-for-relevant-policies/tree/master/fond-benchmarks) (but not reported in the 2012 paper itself) and became default benchmarks for later FOND planners: 👍
 
 - `blocksworld-ex`: FOND version of the probabilistic `ex-blocksworld` in 2008 IPC-6. In this domain, blocks can explode.
+- `first-responders-new`: as with `forest-new` and `blocksworld-new`, this is `first-responders-new` but with expanded sets of the benchmark to scale much larger.
 
 ## FOND-SAT (2018)
 

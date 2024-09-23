@@ -106,9 +106,9 @@ elevators = [
     for f in get_instances("elevators", pattern="p*.pddl")
 ]
 
-ex_blocksworld = [
+blocksworld_ex = [
     ("domain.pddl", os.path.basename(f))
-    for f in get_instances("ex-blocksworld", pattern="p*.pddl")
+    for f in get_instances("blocksworld-ex", pattern="p*.pddl")
 ]
 faults = [
     (
@@ -293,7 +293,7 @@ DOMAINS = {
     "doors": doors,  #
     "earth-observation": earth_observation,  #
     "elevators": elevators,  #
-    "ex-blocksworld": ex_blocksworld,
+    "blocksworld-ex": blocksworld_ex,
     "faults": faults,
     "faults-new": faults_new,  #
     "first-responders": first_responders,
@@ -343,7 +343,7 @@ COLLECTIONS = {
         "tireworld-truck",
     ],
     "extra": [
-        "ex-blocksworld",
+        "blocksworld-ex",
         "puffbot_dialogue_pddl",
         "rectangle-tireworld",
         "rectangle-tireworld-noghost",

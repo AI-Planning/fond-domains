@@ -68,7 +68,9 @@ Second, the PRP paper modified three domains from [**2006 IPC5 Probabilistic Tra
 - `elevators`
 - `zenotravel`
 
-Many additional domains were added later to its [repo](https://github.com/QuMuLab/planner-for-relevant-policies/tree/master/fond-benchmarks) that were not included in the original 2012 paper, but became default benchmarks for later FOND planners. 👍
+Many additional domains were added later to its [repo](https://github.com/QuMuLab/planner-for-relevant-policies/tree/master/fond-benchmarks) (but not reported in the 2012 paper itself) and became default benchmarks for later FOND planners: 👍
+
+- `blocksworld-ex`: FOND version of the probabilistic `ex-blocksworld` in 2008 IPC-6. In this domain, blocks can explode.
 
 ## FOND-SAT (2018)
 

@@ -91,8 +91,13 @@ These five come from the [FOND-SAT](https://github.com/tomsons22/FOND-SAT) repo/
 - `chain-of-rooms`: from [Constructing conditional plans by a theorem-prover](https://jair.org/index.php/jair/article/view/10230/), JAIR 10 (1999), 323–352, as part of the QBFPLAN planner.
 - `earth-observation`: ([J Aldinger & J Löhr, 2013)](https://gki.informatik.uni-freiburg.de/papers/aldinger-loehr-pcd2013.pdf)
 - `puffbot-dialog`: domain generating the dialogue policy for building dialogue agents in the health-care setting. Reported in [Teixeira et. al SAC'21 paper](https://dl.acm.org/doi/10.1145/3412841.3441942) and [PhD thesis](https://iris.unitn.it/retrieve/handle/11572/361402/595412/phd_unitn_santos_teixeira_milene.pdf).
-- `st_mapfdu`: from Thorsten Engesser on planning for implicit coordination. Strong cyclic plans exist, but it's the acyclic ones that are desired.
 
+### From strong domains: `st_xyz`
+
+These are domains that were designed to admit _strong_ solutions. Strong cyclic plans exist, but it's the acyclic ones that are desired. 😉
+
+- `st_blocksworld`, `st_faults`, `st_first_responders`, `st_tiresworld`: domains from the 2008 IPC-6 FOND track that were modified to have _strong_ solutions by [Jicheng Fu et. al ICTAI'13](https://ieeexplore.ieee.org/document/6735234).
+- `st_mapfdu`: from Thorsten Engesser on planning for implicit coordination; [AAAI'20](https://doi.org/10.1609/aaai.v34i05.6204).
 
 ## Catalogue Tool
 

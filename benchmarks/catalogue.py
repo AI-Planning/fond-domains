@@ -209,12 +209,12 @@ st_mapfdu = [
     )
     for f in get_instances("st_mapfdu", regex=r"^p\d+.pddl")
 ]
-sttires = [
+st_tiresworld = [
     (
         "domain.pddl",
         os.path.basename(f),
     )
-    for f in get_instances("st_tires", regex=r"^p\d+.pddl")
+    for f in get_instances("st_tiresworld", regex=r"^p\d+.pddl")
 ]
 tidyup = [
     (
@@ -310,7 +310,7 @@ DOMAINS = {
     "st_faults": st_faults,
     "st_first_responders": st_first_respondeners,
     "st_mapfdu": st_mapfdu,
-    "st_tires": sttires,
+    "st_tiresworld": st_tiresworld,
     "tidyup-mdp": tidyup,  #
     "tireworld": tireworld,  #
     "tireworld-spiky": tireworld_spiky,  #
@@ -353,7 +353,7 @@ COLLECTIONS = {
         "st_faults",
         "st_first_responders",
         "st_mapfdu",
-        "st_tires",
+        "st_tiresworld",
     ],
     "interesting": ["climber", "bus-fare", "river"],
     "all": list(DOMAINS.keys()),

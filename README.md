@@ -11,14 +11,13 @@ Planning under non-deterministic `oneof` actions was then first used in the 2006
 
 * [5th International Planning Competition: Non-deterministic Track Call For Participation](https://ipc06.icaps-conference.org/probabilistic/docs/cf-ipc-prob.pdf), Blai Bonet and Robert Givan, IPC-5 @ ICAPS 2006.
 
-
 ## Notable Changes
 
-- `faults`, `faults-new`, and `st_faults` have an empty `:parameters` block added to the `finish` action.
-- Similarly for `tireworld`+`st_tires` and the `changetire` action.
-- `forest` and `forest-new` had `problem` type renamed to `sub-problem` to avoid a conflict with the `problem` keyword.
-- Missing requirements added to `st_blocksworld`, `st_first_responders`, `st_mapfdu`, `st_tires`, `st_faults`, `puffbot_dialogue_pddl`, `tidyup-mdp`, and `zenotravel`.
-- `puffbot_dialogue_pddl` had the problem-specific objects moved to domain constants, since they are used in actions.
+- added empty `:parameters` block to some actions:
+  - `finish` action in `faults`, `faults-new`, and `st_faults`
+  - `changetire` action in `tireworld` and `st_tireworld`.
+- added missing `:requirements` in domains:
+  - `st_blocksworld`, `st_first_responders`, `st_mapfdu`, `st_tires`, `st_faults`, `puffbot_dialogue_pddl`, `tidyup-mdp`, and `zenotravel`.
 
 
 ## Probabilistic Interesting  - (Little and Thiebaux 2007)
@@ -40,6 +39,7 @@ The following four domains from the [**2008 IPC-6 FOND track**](https://ipc08.ic
 - `faults` (all solvable)
 - `first-responders`
 - `forest` (at least 48/66 proven unsolvable)
+  - type `problem` renamed to `sub-problem` to avoid a conflict with the `problem` keyword.
 
 These domains are already FOND ones, that is, they use the non-deterministic `oneof` construct. Not every problem has a strong-cyclic plan, some were proved unsolvable (see Table 1 in [2012 PRP paper](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf)).
 
@@ -90,6 +90,7 @@ These five come from the [FOND-SAT](https://github.com/tomsons22/FOND-SAT) repo/
 - `chain-of-rooms`: from [Constructing conditional plans by a theorem-prover](https://jair.org/index.php/jair/article/view/10230/), JAIR 10 (1999), 323–352, as part of the QBFPLAN planner.
 - `earth-observation`: ([J Aldinger & J Löhr, 2013)](https://gki.informatik.uni-freiburg.de/papers/aldinger-loehr-pcd2013.pdf)
 - `puffbot-dialog`: domain generating the dialogue policy for building dialogue agents in the health-care setting. Reported in [Teixeira et. al SAC'21 paper](https://dl.acm.org/doi/10.1145/3412841.3441942) and [PhD thesis](https://iris.unitn.it/retrieve/handle/11572/361402/595412/phd_unitn_santos_teixeira_milene.pdf).
+  - have problem-specific objects moved to domain constants, since they are used in actions.
 - `tidyup-mdp`: from MyND (as far as we can trace it back; see [here](https://bitbucket.org/robertmattmueller/mynd/src/master/data/fond-pddl/tidyup-mdp/)); with significant clean-up by Christian Muise.
   - modified to fix some PDDL bugs: the `cup*` objects were moved from the problem files to constants in the domain, since they are mentioned explicitly in action preconditions.
 

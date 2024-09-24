@@ -150,12 +150,12 @@ Using PDDL with `oneof` construct:
 - [FOND-SAT](https://github.com/tomsons22/FOND-SAT) ([2018](https://arxiv.org/pdf/1806.09455))
 - [MyND](https://github.com/JackyCSer/MyNDPlanner) ([2010](https://ojs.aaai.org/index.php/ICAPS/article/view/13408/))
 - [PRP](https://github.com/QuMuLab/planner-for-relevant-policies) ([2012](https://cdn.aaai.org/ojs/13520/13520-40-17038-1-2-20201228.pdf))
-- FIP ([2011](https://www.ijcai.org/Proceedings/11/Papers/326.pdf))
 
-Not using `oneof`:
+Not using `oneof` construct:
 
+- FIP ([2011](https://www.ijcai.org/Proceedings/11/Papers/326.pdf)). Domains need to be (manually) determinized first (with specific naming on outcomes; fewer than 10).
 - GAMER ([2009](https://dl.acm.org/doi/10.5555/1814110.1814112); [pdf](https://link.springer.com/chapter/10.1007/978-3-642-04617-9_1))
 - NDP (2008)
 - MBP ([2003](https://www.sciencedirect.com/science/article/pii/S0004370202003740))
 - QBFPLAN ([1999](https://jair.org/index.php/jair/article/view/10230/))
-- UMOP ([2000](https://jair.org/index.php/jair/article/view/10265)): universal OBDD-based planning framework for non-deterministic multi-agent domains (described in their NADL domain description language)
+- UMOP ([2000](https://jair.org/index.php/jair/article/view/10265)): universal OBDD-based planning framework for non-deterministic multi-agent domains (described in their NADL domain description language).

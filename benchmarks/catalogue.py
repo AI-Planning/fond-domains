@@ -75,10 +75,21 @@ blocks_world_new = [
     for f in get_instances("blocksworld-new", pattern="p*.pddl")
 ]
 
+bus_fare = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("bus-fare", pattern="p*.pddl")
+]
+
 chain_of_rooms = [
     ("domain.pddl", os.path.basename(f))
     for f in get_instances("chain-of-rooms", pattern="p*.pddl")
 ]
+
+climber = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("climber", pattern="p*.pddl")
+]
+
 
 doors = [
     ("domain.pddl", os.path.basename(f))
@@ -95,9 +106,9 @@ elevators = [
     for f in get_instances("elevators", pattern="p*.pddl")
 ]
 
-ex_blocksworld = [
+blocksworld_ex = [
     ("domain.pddl", os.path.basename(f))
-    for f in get_instances("ex-blocksworld", pattern="p*.pddl")
+    for f in get_instances("blocksworld-ex", pattern="p*.pddl")
 ]
 faults = [
     (
@@ -160,9 +171,9 @@ miner = [
     ("domain.pddl", os.path.basename(f))
     for f in get_instances("miner", pattern="p*.pddl")
 ]
-puffbot = [
+puffbot_dialog = [
     (f"dm{extract_instance_no(f)}.pddl", os.path.basename(f))
-    for f in get_instances("puffbot_dialogue_pddl", regex=r"pb\d+.pddl")
+    for f in get_instances("puffbot-dialog", regex=r"pb\d+.pddl")
 ]
 rectangle_tire = [
     ("domain.pddl", os.path.basename(f))
@@ -198,12 +209,12 @@ st_mapfdu = [
     )
     for f in get_instances("st_mapfdu", regex=r"^p\d+.pddl")
 ]
-sttires = [
+st_tiresworld = [
     (
         "domain.pddl",
         os.path.basename(f),
     )
-    for f in get_instances("st_tires", regex=r"^p\d+.pddl")
+    for f in get_instances("st_tiresworld", regex=r"^p\d+.pddl")
 ]
 tidyup = [
     (
@@ -248,6 +259,19 @@ triangletire_world = [
     )
     for f in get_instances("triangle-tireworld", regex=r"^p\d+.pddl")
 ]
+
+bus_fare = [
+    ("domain.pddl", os.path.basename(f))
+    for f in get_instances("bus-fare", pattern="p*.pddl")
+]
+
+river = [
+    (
+        "domain.pddl",
+        os.path.basename(f),
+    )
+    for f in get_instances("river", regex=r"^p\d+.pddl")
+]
 zenotravel = [
     (
         "domain.pddl",
@@ -263,11 +287,13 @@ DOMAINS = {
     "blocksworld": blocks_world,
     "blocksworld-2": blocks_world2,
     "blocksworld-new": blocks_world_new,  #
+    "bus-fare": bus_fare,
     "chain-of-rooms": chain_of_rooms,  #
+    "climber": climber,
     "doors": doors,  #
     "earth-observation": earth_observation,  #
     "elevators": elevators,  #
-    "ex-blocksworld": ex_blocksworld,
+    "blocksworld-ex": blocksworld_ex,
     "faults": faults,
     "faults-new": faults_new,  #
     "first-responders": first_responders,
@@ -276,14 +302,15 @@ DOMAINS = {
     "forest-new": forest_new,  #
     "islands": islands,  #
     "miner": miner,  #
-    "puffbot_dialogue_pddl": puffbot,
+    "puffbot-dialog": puffbot_dialog,
     "rectangle-tireworld": rectangle_tire,
     "rectangle-tireworld-noghost": rectangle_tire_noghost,
+    "river": river,
     "st_blocksworld": st_blocksworld,
     "st_faults": st_faults,
     "st_first_responders": st_first_respondeners,
     "st_mapfdu": st_mapfdu,
-    "st_tires": sttires,
+    "st_tiresworld": st_tiresworld,
     "tidyup-mdp": tidyup,  #
     "tireworld": tireworld,  #
     "tireworld-spiky": tireworld_spiky,  #
@@ -316,8 +343,8 @@ COLLECTIONS = {
         "tireworld-truck",
     ],
     "extra": [
-        "ex-blocksworld",
-        "puffbot_dialogue_pddl",
+        "blocksworld-ex",
+        "puffbot-dialog",
         "rectangle-tireworld",
         "rectangle-tireworld-noghost",
     ],
@@ -326,8 +353,9 @@ COLLECTIONS = {
         "st_faults",
         "st_first_responders",
         "st_mapfdu",
-        "st_tires",
+        "st_tiresworld",
     ],
+    "interesting": ["climber", "bus-fare", "river"],
     "all": list(DOMAINS.keys()),
 }
 
@@ -356,3 +384,23 @@ def confirm_files():
 
 
 # confirm_files()
+
+
+if __name__ == "__main__":
+
+    # Prints out every benchmark and the number of instances in them
+    confirm_files()
+
+    # Access the problems for a specific domain
+    # for dom, prob in DOMAINS["acrobatics"]:
+    #     print(dom)
+    #     print(prob)
+
+    # Access all the benchmarks for a specific collection
+    print("All domains in collection 'all-fond-papers':")
+    for domain_name in COLLECTIONS["all-fond-papers"]:
+        print("\t", domain_name)
+
+    print("All domains in collection 'interesting':")
+    for domain_name in COLLECTIONS["interesting"]:
+        print("\t", domain_name)
